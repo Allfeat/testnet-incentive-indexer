@@ -1,0 +1,41 @@
+{
+  "name": "harmonie-starter",
+  "version": "1.0.0",
+  "description": "A basic example project with an event handler to index Balances transfer. Read more about this at https://academy.subquery.network/build/substrate-evm.html. This project can be use as a starting point for developing your SubQuery project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "subql build",
+    "codegen": "subql codegen",
+    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
+    "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
+    "prepack": "rm -rf dist && npm run build",
+    "test": "subql build && subql-node test"
+  },
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "author": "SubQuery Team",
+  "license": "Apache-2.0",
+  "resolutions": {
+    "ipfs-unixfs": "6.0.6"
+  },
+  "dependencies": {
+    "@subql/types-ethereum": "latest",
+    "assert": "^2.0.0"
+  },
+  "devDependencies": {
+    "@subql/cli": "latest",
+    "@subql/types": "latest",
+    "@subql/testing": "latest",
+    "@subql/node-ethereum": "latest",
+    "ethers": "^5.7.2",
+    "@polkadot/api": "^12",
+    "typescript": "^5.2.2",
+    "@subql/node": "latest"
+  },
+  "exports": {
+    "chaintypes": "./src/chaintypes.ts"
+  }
+}
