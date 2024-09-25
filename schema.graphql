@@ -2,11 +2,10 @@
 # Add the `@index` or `@index(unique: true)` annotation after any non-key field
 # https://academy.subquery.network/build/graphql.html#indexing-by-non-primary-key-field
 
-type SubstrateTransfer @entity {
+type FaucetTransfer @entity {
   id: ID!
   amount: BigInt!
-  blockNumber: Int! @index
-  date: Date @index
-  from: String! @index
-  to: String!
+  blockNumber: Int!
+  date: Date
+  to: String! @index
 }

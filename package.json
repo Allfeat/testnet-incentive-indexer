@@ -26,14 +26,14 @@
     "assert": "^2.0.0"
   },
   "devDependencies": {
-    "@subql/cli": "latest",
-    "@subql/types": "latest",
-    "@subql/testing": "latest",
-    "@subql/node-ethereum": "latest",
-    "ethers": "^5.7.2",
     "@polkadot/api": "^12",
-    "typescript": "^5.2.2",
-    "@subql/node": "latest"
+    "@subql/cli": "latest",
+    "@subql/node": "latest",
+    "@subql/node-ethereum": "latest",
+    "@subql/testing": "latest",
+    "@subql/types": "latest",
+    "ethers": "^5.7.2",
+    "typescript": "^5.2.2"
   },
   "exports": {
     "chaintypes": "./src/chaintypes.ts"

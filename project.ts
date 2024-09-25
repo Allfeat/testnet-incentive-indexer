@@ -34,11 +34,12 @@ import {
        * When developing your project we suggest getting a private API key
        */
       endpoint: "https://harmonie-endpoint-01.allfeat.io",
+      dictionary: "https://subq-dictionary.allfeat.io"
     },
     dataSources: [
       {
         kind: SubstrateDatasourceKind.Runtime,
-        startBlock: 1743500,
+        startBlock: 14491600,
         mapping: {
           file: "./dist/index.js",
           handlers: [

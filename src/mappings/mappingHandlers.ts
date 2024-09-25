@@ -1,8 +1,11 @@
-import { SubstrateTransfer } from "../types";
+import { FaucetTransfer } from "../types";
 import { SubstrateEvent } from "@subql/types";
 import { Balance } from "@polkadot/types/interfaces";
 
+const faucet_address: string = "0xFe50094e366802c9d0aa0b47fC19B275e92F0b7F";
+
 export async function handleEvent(event: SubstrateEvent): Promise<void> {
+
   logger.info(
     `New transfer event found at block ${event.block.block.header.number.toString()}`
   );
@@ -12,12 +15,16 @@ export async function handleEvent(event: SubstrateEvent): Promise<void> {
     },
   } = event;
 
+  if (from.toString() !== faucet_address) {
+    logger.info("Not a faucet transfer, ignoring.");
+    return;
+  }
+
   const blockNumber: number = event.block.block.header.number.toNumber();
-  const transfer = SubstrateTransfer.create({
+  const transfer = FaucetTransfer.create({
     id: `${event.block.block.header.number.toNumber()}-${event.idx}`,
     blockNumber,
     date: event.block.timestamp,
-    from: from.toString(),
     to: to.toString(),
     amount: (amount as Balance).toBigInt(),
   });
