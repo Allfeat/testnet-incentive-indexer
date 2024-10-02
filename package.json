@@ -28,6 +28,7 @@
   "devDependencies": {
     "@polkadot/api": "^12",
     "@subql/cli": "latest",
+    "@subql/frontier-evm-processor": "^1.0.0",
     "@subql/node": "latest",
     "@subql/node-ethereum": "latest",
     "@subql/testing": "latest",
@@ -36,6 +37,7 @@
     "typescript": "^5.2.2"
   },
   "exports": {
+    "frontierEvm": "./node_modules/@subql/frontier-evm-processor/dist/index.js",
     "chaintypes": "./src/chaintypes.ts"
   }
 }

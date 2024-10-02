@@ -3,9 +3,11 @@ import {
     SubstrateHandlerKind,
     SubstrateProject,
   } from "@subql/types";
+import { FrontierEvmDatasource } from "@subql/frontier-evm-processor";
+import { EthereumHandlerKind } from "@subql/types-ethereum";
   
   // Can expand the Datasource processor types via the genreic param
-  const project: SubstrateProject = {
+  const project: SubstrateProject<FrontierEvmDatasource> = {
     specVersion: "1.0.0",
     version: "0.0.1",
     name: "harmonie-starter",
@@ -39,7 +41,7 @@ import {
     dataSources: [
       {
         kind: SubstrateDatasourceKind.Runtime,
-        startBlock: 14491600,
+        startBlock: 1449160,
         mapping: {
           file: "./dist/index.js",
           handlers: [
@@ -54,6 +56,32 @@ import {
           ],
         },
       },
+      {
+        kind: "substrate/FrontierEvm",
+        startBlock: 1796813,
+        processor: {
+          file: "./node_modules/@subql/frontier-evm-processor/dist/bundle.js",
+          options: {
+            abi: "pass",
+            address: "0x13ed4442474DeFA11aa97A35a8B699228D1C5de2",
+          },
+        },
+        assets: new Map([["pass", { file: "./abis/pass.abi.json" }]]),
+        mapping: {
+          file: "./dist/index.js",
+          handlers: [
+            {
+              kind: "substrate/FrontierEvmEvent",
+              handler: "handleMintEvent",
+              filter: {
+                topics: [
+                  "Minted(address indexed to,uint256 indexed tokenId)",
+                ]
+              }
+            },
+          ],
+        },
+      }
     ],
   };
   

@@ -9,3 +9,8 @@ type FaucetTransfer @entity {
   date: Date
   to: String! @index
 }
+
+type PassMint @entity {
+  id: ID!
+  to: String! @index
+}
